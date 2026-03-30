@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Språkstöd för lärare</title>
+  <link rel="stylesheet" href="/css/style.css" />
+</head>
+<body>
+  <main class="container">
+    <h1>Språkstöd för lärare</h1>
+    <p class="intro">
+      Skapa enkla språkaktiviteter för barn utifrån ålder, nivå och tema.
+    </p>
+
+    <form id="lessonForm" class="card">
+      <label for="age">Barnets ålder</label>
+      <input type="text" id="age" name="age" placeholder="t.ex. 6 år" />
+
+      <label for="level">Språknivå</label>
+      <select id="level" name="level">
+        <option value="">Välj nivå</option>
+        <option value="nybörjare">Nybörjare</option>
+        <option value="medel">Medel</option>
+        <option value="avancerad">Avancerad</option>
+      </select>
+
+      <label for="theme">Tema</label>
+      <input type="text" id="theme" name="theme" placeholder="t.ex. djur, färger, familj" />
+
+      <label for="language">Språk</label>
+      <select id = "language" name  = "language">
+        <option value="Engelska"> Engelska</option>
+        <option value="Thailändska">Thailändska</option>
+      </select> 
+
+
+      <button type="submit">Generera aktivitet</button>
+    </form>
+
+    <button id="logoutBtn" type="button">Logga ut</button>
+
+    <section class="result card">
+      <h2>Resultat</h2>
+      <div id="output">
+        Här kommer förslag på språkaktivitet senare.
+      </div>
+    </section>
+  </main>
+
+  <script type ="module" src="script.js"></script>
+</body>
+</html>
