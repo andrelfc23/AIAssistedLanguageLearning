@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="sv">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Kiddolingo - Språkquiz</title>
+
+  <link rel="stylesheet" href="/css/quiz.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
+</head>
+
+<body>
+
+  <header class="topbar">
+    <div class="brand">
+      <span class="material-symbols-rounded">smart_toy</span>
+      <div>
+        <h1>Kiddolingo</h1>
+       
+      </div>
+    </div>
+
+    <a href="/index.html" class="back-link">
+      <span class="material-symbols-rounded">home</span>
+      Startsida
+    </a>
+  </header>
+
+  <main class="quiz-builder">
+
+ 
+    <section class="quiz-preview">
+
+      <section id="mascotSelection" class="mascot-selection">
+        <h2>Välj din kompis</h2>
+      
+        <div class="mascot-grid">
+          <button class="mascot-card" data-mascot="chicken">
+            <lottie-player
+              src="/mascot/chicken.json"
+              background="transparent"
+              speed="1"
+              loop
+              autoplay>
+            </lottie-player>
+            <span>Kyckling</span>
+          </button>
+          
+          <button class="mascot-card" data-mascot="lexi">
+            <lottie-player
+              src="/mascot/lexi.json"
+              background="transparent"
+              speed="1"
+              loop
+              autoplay>
+            </lottie-player>
+            <span>Lexi</span>
+          </button>
+          
+          <button class="mascot-card" data-mascot="spaceHero">
+            <lottie-player
+              src="/mascot/spaceHero.json"
+              background="transparent"
+              speed="1"
+              loop
+              autoplay>
+            </lottie-player>
+            <span>RymdHjälte</span>
+          </button>
+          
+        </div>
+      </section>
+      
+    
+  
+      <div id="quizOutput" class="quiz-empty">
+        <span class="material-symbols-rounded">quiz</span>
+        <h3>Inget quiz skapat ännu</h3>
+        <p>Fyll i formuläret till vänster och klicka på “Generera quiz”.</p>
+      </div>
+    </section>
+  
+    <aside class="result-panel">
+      <p class="eyebrow">Resultat</p>
+      <h2>Quizresultat</h2>
+  
+      <div class="score-box">
+        <span class="material-symbols-rounded">emoji_events</span>
+        <h3>0 / 0</h3>
+        <p>Poäng visas här när quizet är genomfört.</p>
+      </div>
+  
+      <div class="result-info">
+        <div>
+          <strong>Kategori</strong>
+          <span id="resultCategory">-</span>
+        </div>
+  
+        <div>
+          <strong>Nivå</strong>
+          <span id="resultLevel">-</span>
+        </div>
+  
+        <div>
+          <strong>Antal frågor</strong>
+          <span id="resultAmount">-</span>
+        </div>
+      </div>
+    </aside>
+  
+  </main>
+  
+  <script type="module" src="/js/quiz.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+  <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+</body>
+</html>

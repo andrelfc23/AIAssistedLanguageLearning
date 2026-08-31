@@ -30,6 +30,7 @@ form.addEventListener("submit", async (e) => {
     await signInWithEmailAndPassword(auth, email, password);
     window.location.href = "/index.html";
   } catch (error) {
-    message.textContent = error.message;
+    message.textContent = "Fel e-post eller lösenord.";
+    console.error(error);
   }
 });

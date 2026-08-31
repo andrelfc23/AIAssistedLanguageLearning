@@ -1,4 +1,4 @@
-import { auth, createUserWithEmailAndPassword } from "./firebase.js";
+import { auth, createUserWithEmailAndPassword } from "https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js";
 
 const form = document.getElementById("registerForm");
 const message = document.getElementById("message");

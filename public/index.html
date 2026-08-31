@@ -3,51 +3,467 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Språkstöd för lärare</title>
-  <link rel="stylesheet" href="/css/style.css" />
+  <title>EduTailor</title>
+  <link rel="stylesheet" href="/css/dashboard.css" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded" rel="stylesheet" />
 </head>
+
 <body>
-  <main class="container">
-    <h1>Språkstöd för lärare</h1>
-    <p class="intro">
-      Skapa enkla språkaktiviteter för barn utifrån ålder, nivå och tema.
-    </p>
+  <aside class="sidebar" id="sidebar">
+    <div class="brand">
+      <div class="logo">
+      <span class="material-symbols-rounded">menu_book</span>
+    </div>
+      <h1>Kiddolingo</h1>
+    </div>
 
-    <form id="lessonForm" class="card">
-      <label for="age">Barnets ålder</label>
-      <input type="text" id="age" name="age" placeholder="t.ex. 6 år" />
+    <div class="user-box">
 
-      <label for="level">Språknivå</label>
-      <select id="level" name="level">
-        <option value="">Välj nivå</option>
-        <option value="nybörjare">Nybörjare</option>
-        <option value="medel">Medel</option>
-        <option value="avancerad">Avancerad</option>
-      </select>
-
-      <label for="theme">Tema</label>
-      <input type="text" id="theme" name="theme" placeholder="t.ex. djur, färger, familj" />
-
-      <label for="language">Språk</label>
-      <select id = "language" name  = "language">
-        <option value="Engelska"> Engelska</option>
-        <option value="Thailändska">Thailändska</option>
-      </select> 
-
-
-      <button type="submit">Generera aktivitet</button>
-    </form>
-
-    <button id="logoutBtn" type="button">Logga ut</button>
-
-    <section class="result card">
-      <h2>Resultat</h2>
-      <div id="output">
-        Här kommer förslag på språkaktivitet senare.
+      <div class="avatar">
+        <span class="material-symbols-rounded">school</span>
       </div>
-    </section>
-  </main>
+    
+      <div class="user-box-content">
+        <strong>Välkommen!</strong>
+      </div>
+    
+    </div>
 
-  <script type ="module" src="script.js"></script>
+    <nav class="nav-menu">
+      <button class="nav-item active">
+        <span class="material-symbols-rounded">home</span>
+        Startsida
+      </button>
+    
+      <button class="nav-item">
+        <span class="material-symbols-rounded">folder_open</span>
+        Mina quiz
+      </button>
+    
+      <button class="nav-item">
+        <span class="material-symbols-rounded">groups</span>
+        Elever
+      </button>
+    </nav>
+
+   
+
+    <button id="logoutBtn" class="logout-btn-sidebar" type="button">Logga ut
+      <span class="material-symbols-rounded">logout</span>
+    </button>
+  </aside>
+
+  <div class="page">
+    <header class="topbar">
+      <button class="menu-btn" id="menuBtn" type="button">☰</button>
+
+      <div class="search-box">
+        <input type="text" placeholder="Sök efter quizaktiviteter och resultat" />
+      </div>
+
+      <div class="top-actions">
+
+        <button class="notification-btn">
+          <span class="material-symbols-rounded">notifications</span>
+      
+          <span class="notification-badge">3</span>
+        </button>
+      
+        <button class="help-btn">
+          <span class="material-symbols-rounded">help</span>
+      
+          Hjälp
+        </button>
+      
+      </div>
+
+    </header>
+
+    <main class="main-content">
+
+      <section class="dashboard-hero">
+        <p class="eyebrow">Översikt</p>
+        <h1>Språkquiz för barn</h1>
+        <p>
+          Skapa interaktiva quiz för dina elever och se deras progression
+        </p>
+      </section>
+    
+      <section class="dashboard-actions">
+
+        <button
+          class="dashboard-action-card primary-action quiz-card"
+          id="showQuizCreatorBtn"
+          type="button">
+      
+          <div class="action-card-top">
+            <div class="action-card-icon">
+              <span class="material-symbols-rounded">psychology</span>
+            </div>
+      
+            <span class="action-card-badge">Anpassade quiz</span>
+          </div>
+      
+          <div class="action-card-content">
+            <h2>Skapa quiz</h2>
+            <p>Effektiv quizskapande med AI för dina elever</p>
+          </div>
+      
+        </button>
+      
+        <button
+          class="dashboard-action-card primary-action result-card"
+          id="showResultsBtn"
+          type="button">
+      
+          <div class="action-card-top">
+            <div class="action-card-icon">
+              <span class="material-symbols-rounded">bar_chart</span>
+            </div>
+      
+            <span class="action-card-badge">Elevframsteg</span>
+          </div>
+      
+          <div class="action-card-content">
+            <h2>Resultat</h2>
+            <p>Följ elevernas framsteg och quizresultat</p>
+          </div>
+      
+        </button>
+      
+      </section>
+    
+      <section id="quizCreatorSection" class="dashboard-section hidden">
+
+        <div class="quiz-workspace">
+      
+          <div class="section-card quiz-settings-card">
+      
+            <button id="backToDashboardBtn" type="button" class="back-dashboard-btn">
+              <span class="material-symbols-rounded">arrow_back</span>
+              Tillbaka till huvudmeny
+            </button>
+      
+            <div class="quiz-create-header">
+              <div class="quiz-create-icon">
+                <span class="material-symbols-rounded">tune</span>
+              </div>
+      
+              <div>
+                <h2>Skapa nytt quiz</h2>
+                <p>Gör dina val nedan så skapar AI:n ett skräddarsytt quiz för dina elever</p>
+              </div>
+            </div>
+      
+            <form id="quizForm" class="quiz-step-form">
+      
+              <section class="quiz-step-card">
+                <div class="quiz-step-number">1</div>
+      
+                <div class="quiz-step-content">
+                  <div class="quiz-step-header">
+                    <h3>Vem ska träna?</h3>
+                    <p>Välj vilken elev quizet ska anpassas för.</p>
+                  </div>
+      
+                  <div class="quiz-step-grid two-columns">
+                    <div class="form-group">
+                      <label for="studentSelect">Elev</label>
+                      <select id="studentSelect" required>
+                        <option value="">Välj elev</option>
+                        <option value="Noah">Noah</option>
+                        <option value="Elias">Elias</option>
+                        <option value="William">William</option>
+                        <option value="Liam">Liam</option>
+                        <option value="Oliver">Oliver</option>
+                        <option value="Alice">Alice</option>
+                        <option value="Elsa">Elsa</option>
+                        <option value="Maja">Maja</option>
+                        <option value="Alma">Alma</option>
+                        <option value="Ella">Ella</option>
+                      </select>
+                    </div>
+      
+                    <div class="form-group">
+                      <label for="level">Årskurs</label>
+                      <select id="level" required>
+                        <option value="">Välj årskurs</option>
+                        <option value="2">Årskurs 2</option>
+                        <option value="3">Årskurs 3</option>
+                        <option value="4">Årskurs 4</option>
+                        <option value="5">Årskurs 5</option>
+                        <option value="6">Årskurs 6</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </section>
+      
+              <section class="quiz-step-card">
+                <div class="quiz-step-number">2</div>
+      
+                <div class="quiz-step-content">
+                  <div class="quiz-step-header">
+                    <h3>Vad ska eleven träna på?</h3>
+                    <p>Välj språk, tema och språkliga moment.</p>
+                  </div>
+      
+                  <div class="quiz-step-grid three-columns">
+                    <div class="form-group">
+                      <label for="category">Tema</label>
+                      <select id="category" required>
+                        <option value="">Välj tema</option>
+                        <option value="djur">Djur</option>
+                        <option value="mat">Mat</option>
+                        <option value="kroppen">Kroppen</option>
+                      </select>
+                    </div>
+      
+                    <div class="form-group">
+                      <label for="focus">Moment</label>
+                      <select id="focus">
+                        <option value="ordförråd">Ordförråd</option>
+                        <option value="grammatik">Grammatik</option>
+                        <option value="stavning">Stavning</option>
+                      </select>
+                    </div>
+      
+                    <div class="form-group">
+                      <label for="language">Språk</label>
+                      <select id="language">
+                        <option value="engelska"> Engelska</option>
+                        <option value="spanska">Spanska</option>
+                      </select>
+                    </div>
+
+                  </div>
+                </div>
+              </section>
+      
+              <section class="quiz-step-card">
+                <div class="quiz-step-number">3</div>
+      
+                <div class="quiz-step-content">
+                  <div class="quiz-step-header">
+                    <h3>Hur ska quizet anpassas?</h3>
+                    <p>Välj omfattning och svårighetsgrad.</p>
+                  </div>
+      
+                  <div class="quiz-step-grid two-columns">
+                    <div class="form-group">
+                      <label for="difficulty">Svårighetsgrad</label>
+                      <select id="difficulty">
+                        <option value="lätt">Lätt</option>
+                        <option value="medel">Medel</option>
+                        <option value="utmanande">Utmanande</option>
+                      </select>
+                    </div>
+      
+                    <div class="form-group">
+                      <label for="amount">Antal frågor</label>
+                      <select id="amount">
+                        <option value="5">5 frågor</option>
+                        <option value="10">10 frågor</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+              </section>
+      
+              <section class="quiz-step-card">
+                <div class="quiz-step-number">4</div>
+      
+                <div class="quiz-step-content">
+                  <div class="quiz-step-header">
+                    <h3>Extra anpassning</h3>
+                    <p>Lägg till egna instruktioner utifrån elevens behov</p>
+                  </div>
+      
+                  <div class="form-group">
+                    <label for="teacherPrompt">Övriga önskemål</label>
+                    <textarea
+                      id="teacherPrompt"
+                      rows="4"
+                      placeholder="Exempel: gör frågorna enklare, använd korta meningar eller fokusera på vardagliga ord"
+                    ></textarea>
+                  </div>
+                </div>
+              </section>
+      
+              <div class="quiz-next-step">
+
+                <span class="material-symbols-rounded">
+                  visibility
+                </span>
+              
+                <div>
+                  <strong>Nästa steg</strong>
+              
+                  <p>
+                    Granska quizet innan det startas.
+                  </p>
+                </div>
+              
+              </div>
+              
+              <button type="submit" class="generate-btn">
+                Skapa och förhandsgranska AI-quiz
+              </button>
+      
+            </form>
+      
+          </div>
+
+          <div id="quizLoadingState" class="quiz-loading-state hidden">
+            <div class="quiz-loading-spinner"></div>
+          
+            <h2>Skapar quiz...</h2>
+          
+            <p>
+            Detta kan ta några sekunder.
+            </p>
+          </div>
+      
+          <div id="teacherPreview"
+     class="section-card quiz-preview-card hidden">
+
+  <button
+    id="backToQuizSettingsBtn"
+    type="button"
+    class="back-dashboard-btn">
+
+    <span class="material-symbols-rounded">
+      arrow_back
+    </span>
+
+    Tillbaka till quizinställningar
+
+  </button>
+
+  <div class="section-header">
+
+    <span class="material-symbols-rounded">
+      visibility
+    </span>
+
+    <div>
+      <h2>Granska quiz</h2>
+      <p>
+        Kontrollera frågorna innan quizet startas.
+      </p>
+    </div>
+
+  </div>
+
+  <div id="previewQuestions"
+       class="preview-list"></div>
+
+  <div class="preview-actions">
+
+    <button
+      id="regenerateBtn"
+      type="button"
+      class="regenerate-btn">
+
+      Skapa om quiz
+
+    </button>
+
+    <button
+      id="startChildViewBtn"
+      type="button"
+      class="start-child-btn">
+
+      Starta quiz
+
+    </button>
+
+  </div>
+
+</div>
+      
+        </div>
+      
+      </section>
+
+      <section id="resultsSection" class="dashboard-section hidden">
+
+        <button id="backFromResultsBtn" class="back-btn" type="button">
+          <span class="material-symbols-rounded">arrow_back</span>
+          Tillbaka till huvudmeny
+        </button>
+      
+        <div class="results-filter-panel">
+
+          <div class="results-filter-header">
+            <div>
+              <h2>Resultatöversikt</h2>
+              <p>Se genomförda quiz och elevresultat.</p>
+            </div>
+        
+            <button id="clearResultFiltersBtn" type="button">
+              Visa alla resultat
+            </button>
+          </div>
+        
+          <div class="results-filter-grid">
+        
+            <div class="results-filter-group">
+              <label for="studentFilter">Välj elev</label>
+              <select id="studentFilter">
+                <option value="alla">Alla elever</option>
+              </select>
+            </div>
+        
+            <div class="results-filter-group">
+              <label for="gradeFilter">Välj årskurs</label>
+              <select id="gradeFilter">
+                <option value="alla">Alla årskurser</option>
+              </select>
+            </div>
+        
+            <div class="results-filter-group">
+              <label for="difficultyFilter">Välj nivå</label>
+              <select id="difficultyFilter">
+                <option value="alla">Alla nivåer</option>
+              </select>
+            </div>
+        
+            <div class="results-filter-group">
+              <label for="focusFilter">Vad tränade eleven på?</label>
+              <select id="focusFilter">
+                <option value="alla">Alla moment</option>
+              </select>
+            </div>
+        
+          </div>
+        
+        </div>
+        
+      
+        <div id="resultsContainer"></div>
+      
+      </section>
+
+      <section class="recent-activity-section">
+
+        <div class="recent-activity-header">
+          <div>
+            <h2>Senaste aktiviteter</h2>
+            <p>Här visas de senaste genomförda quizen.</p>
+          </div>
+        </div>
+      
+        <div id="recentActivityContainer" class="recent-activity-list">
+          <p class="recent-activity-empty">Laddar senaste aktiviteter...</p>
+        </div>
+      
+      </section>
+    
+    </main>
+  </div>
+
+  <script type="module" src="/js/script.js"></script>
 </body>
 </html>
